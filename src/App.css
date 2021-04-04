@@ -27,15 +27,27 @@
   color: #61dafb;
 }
 
+/* Custom styles */
 
-
-.wordName {
-  background-color: #fafafa;
-  color: darkslategrey;
-  padding: 5px 20px;
-  font-weight: 400;
+.margin {
   margin: 15px;
+}
+
+.actionWord {
+  flex: 1;
+  padding: 10px;
   border-radius: 5px;
+  border: none;
+}
+
+.actionWord:focus {
+  outline: none;
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .title {
@@ -45,26 +57,8 @@
   margin: 15px;
 }
 
-.word {
-  margin: 15px;
-}
-
-.flex {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.actionWord {
-  flex: 1;
-  margin: 15px;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-}
-
-.actionWord:focus {
-  outline: none;
+.cursorPointer {
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
