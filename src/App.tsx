@@ -2,15 +2,31 @@ import React from 'react';
 import { Formik } from 'formik';
 
 import './App.css';
-import { useFirebaseApp, useFirestore, useFirestoreCollection } from 'reactfire';
+import { useFirebaseApp, useFirestore, useFirestoreCollection} from 'reactfire';
 import 'firebase/firestore';
+
+interface document {
+    data: any
+};
+
+interface documents {
+    status: string,
+    data: {
+        docs: document[]
+    }
+};
+
+interface word {
+    englishName?: string,
+    spanishName?: string,
+}
 
 function App() {
 
   const firebaseApp = useFirebaseApp();
   const fireStore = useFirestore();
   const wordsRef = firebaseApp.firestore().collection('words');
-  const documents = useFirestoreCollection(wordsRef);
+  const documents: any = useFirestoreCollection(wordsRef);
 
   return (
       <div className="App">
@@ -21,7 +37,7 @@ function App() {
           </div>
           {
             documents.status === "success" ?
-              documents.data.docs.map((document) => {
+                documents.data && documents.data.docs.map((document: any) => {
                 const word = document.data();
                 return(
                   <div className="word flex">
@@ -38,7 +54,7 @@ function App() {
                 if (values.englishName && values.englishName.length > 0) {
                   // translate
                 }
-                const errors = {};
+                const errors: word = {};
                 if (!values.englishName || values.englishName.length === 0) {
                   errors.englishName = 'Required';
                 } else if (!values.spanishName || values.spanishName.length === 0)  {
